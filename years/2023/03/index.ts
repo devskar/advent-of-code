@@ -4,85 +4,25 @@ import * as test from "../../../util/test";
 import chalk from "chalk";
 import { log, logSolution, trace } from "../../../util/log";
 import { performance } from "perf_hooks";
-import { Cell, Grid, serializeCellArray } from "../../../util/grid";
 import { normalizeTestCases } from "../../../util/test";
 
 const YEAR = 2023;
 const DAY = 3;
 
-// solution path: /home/trevorsg/dev/t-hugs/advent-of-code/years/2023/03/index.ts
-// data path    : /home/trevorsg/dev/t-hugs/advent-of-code/years/2023/03/data.txt
+// solution path: /Users/oskar/Documents/coding/advent-of-code/years/2023/03/index.ts
+// data path    : /Users/oskar/Documents/coding/advent-of-code/years/2023/03/data.txt
 // problem url  : https://adventofcode.com/2023/day/3
 
-function isDigit(char: string) {
-	return /\d/.test(char);
-}
-
 async function p2023day3_part1(input: string, ...params: any[]) {
-	const grid = new Grid({ serialized: input });
-	const clusters = new Map<string, Cell[]>();
-	const symbolCells = grid.getCells(c => !isDigit(c.value) && c.value !== ".");
-	for (const symbol of symbolCells) {
-		const neighbors = symbol.neighbors(true);
-		for (const neighbor of neighbors) {
-			if (isDigit(neighbor.value)) {
-				const cluster = neighbor.findCellCluster({
-					test: c => isDigit(c.value),
-					allowDiagonal: false,
-					allowHorizontal: true,
-					allowVertical: false,
-				});
-				clusters.set(serializeCellArray(cluster), cluster);
-			}
-		}
-	}
-	return [...clusters.values()].map(cells => Number(cells.map(c => c.value).join(""))).reduce((a, b) => a + b);
+	return "Not implemented";
 }
 
 async function p2023day3_part2(input: string, ...params: any[]) {
-	const grid = new Grid({ serialized: input });
-	const symbolCells = grid.getCells(c => !isDigit(c.value) && c.value !== ".");
-	let sum = 0;
-	for (const symbol of symbolCells) {
-		const neighbors = symbol.neighbors(true);
-		const clusters = new Map<string, Cell[]>();
-		for (const neighbor of neighbors) {
-			if (isDigit(neighbor.value)) {
-				const cluster = neighbor.findCellCluster({
-					test: c => isDigit(c.value),
-					allowDiagonal: false,
-					allowHorizontal: true,
-					allowVertical: false,
-				});
-				clusters.set(serializeCellArray(cluster), cluster);
-			}
-		}
-		const clusterValues = [...clusters.values()];
-		if (clusterValues.length === 2) {
-			sum += Number(clusterValues[0].map(c => c.value).join("")) * Number(clusterValues[1].map(c => c.value).join(""));
-		}
-	}
-	return sum;
+	return "Not implemented";
 }
 
 async function run() {
-	const part1tests: TestCase[] = [
-		{
-			input: `467..114..
-...*......
-..35..633.
-......#...
-617*......
-.....+.58.
-..592.....
-......755.
-...$.*....
-.664.598..`,
-			extraArgs: [],
-			expected: `4361`,
-			expectedPart2: `467835`,
-		},
-	];
+	const part1tests: TestCase[] = [];
 	const part2tests: TestCase[] = [];
 
 	const [p1testsNormalized, p2testsNormalized] = normalizeTestCases(part1tests, part2tests);
@@ -108,7 +48,7 @@ async function run() {
 	const part1Solution = String(await p2023day3_part1(input));
 	const part1After = performance.now();
 
-	const part2Before = performance.now();
+	const part2Before = performance.now()
 	const part2Solution = String(await p2023day3_part2(input));
 	const part2After = performance.now();
 

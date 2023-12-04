@@ -9,8 +9,8 @@ import { normalizeTestCases } from "../../../util/test";
 const YEAR = 2023;
 const DAY = 15;
 
-// solution path: /home/trevorsg/dev/t-hugs/advent-of-code/years/2023/15/index.ts
-// data path    : /home/trevorsg/dev/t-hugs/advent-of-code/years/2023/15/data.txt
+// solution path: /Users/oskar/Documents/coding/advent-of-code/years/2023/15/index.ts
+// data path    : /Users/oskar/Documents/coding/advent-of-code/years/2023/15/data.txt
 // problem url  : https://adventofcode.com/2023/day/15
 
 async function p2023day15_part1(input: string, ...params: any[]) {

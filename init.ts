@@ -1,14 +1,13 @@
+import chalk from "chalk";
 import fetch from "cross-fetch";
-import { getAppRoot, replaceAll, wait, getDayRoot, getProblemUrl, getLatestPuzzleDate, formatTime } from "./util/util";
-import playwright from "playwright-chromium";
+import { existsSync } from "fs";
+import * as fs from "fs/promises";
+import mkdirp from "mkdirp";
 import { LocalStorage } from "node-localstorage";
 import * as path from "path";
-import mkdirp from "mkdirp";
-import chalk from "chalk";
-import * as fs from "fs/promises";
-import { existsSync, mkdir } from "fs";
-import { getSessionToken } from "./getToken";
 import { UA_STRING } from "./config";
+import { getSessionToken } from "./getToken";
+import { formatTime, getAppRoot, getDayRoot, getLatestPuzzleDate, getProblemUrl, replaceAll, wait } from "./util/util";
 
 interface Settings {
 	pristine: boolean;
@@ -83,7 +82,7 @@ async function getDayData(day: number, year: number): Promise<string> {
 	const result = await fetch(uri, {
 		headers: {
 			cookie: `session=${sessionToken}`,
-			"user-agent": UA_STRING
+			"user-agent": UA_STRING,
 		},
 	});
 	if (result.status === 200) {
@@ -254,10 +253,7 @@ async function run() {
 						"The latest puzzle won't be released for more than 1 day. Use --wait only within 1 day of next puzzle release."
 				);
 			} else {
-				const releaseTime = getReleaseTime(
-					latestPuzzleAsOfTomorrow.day,
-					latestPuzzleAsOfTomorrow.year
-				);
+				const releaseTime = getReleaseTime(latestPuzzleAsOfTomorrow.day, latestPuzzleAsOfTomorrow.year);
 				// Wait an extra few seconds just in case the system clock is off by a bit.
 				// The player will need to read the problem anyway.
 				const toWait = releaseTime.getTime() - new Date().getTime() + 5000;

@@ -1,14 +1,18 @@
 {
 	"name": "advent-of-code",
 	"version": "1.0.0",
-	"description": "Trevor Gau's solutions to Advent of Code",
+	"description": "devskar's solutions to Advent of Code",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"run": "ts-node ./run.ts",
+		"submit": "ts-node ./submit.ts",
+		"suck": "ts-node ./init.ts suck",
+		"seed": "ts-node ./init.ts seed",
+		"aoclogin": "ts-node ./login.ts"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/T-Hugs/advent-of-code.git"
+		"url": "git+https://github.com/devskar/advent-of-code.git"
 	},
 	"author": "Trevor Gau",
 	"license": "MIT",
