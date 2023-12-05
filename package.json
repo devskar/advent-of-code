@@ -4,9 +4,9 @@
 	"description": "devskar's solutions to Advent of Code",
 	"main": "index.js",
 	"scripts": {
-		"run": "ts-node ./scrips/run.ts",
-		"submit": "ts-node ./scrips/submit.ts",
-		"suck": "ts-node ./scrips/init.ts suck",
+		"run": "ts-node ./scripts/run.ts",
+		"submit": "ts-node ./scripts/submit.ts",
+		"suck": "ts-node ./scripts/init.ts suck",
 		"seed": "ts-node ./scripts/init.ts seed",
 		"aoclogin": "ts-node ./scripts/login.ts"
 	},
