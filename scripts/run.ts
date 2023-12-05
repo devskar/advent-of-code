@@ -1,8 +1,8 @@
-import * as util from "./util/util";
-import path from "path";
-import * as LOGUTIL from "./util/log";
-import * as TESTUTIL from "./util/test";
 import chalk from "chalk";
+import path from "path";
+import * as LOGUTIL from "../util/log";
+import * as TESTUTIL from "../util/test";
+import * as util from "../util/util";
 const { log } = LOGUTIL;
 
 let debug = false;

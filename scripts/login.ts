@@ -1,10 +1,10 @@
 //import inquirer from "inquirer";
-import playwright from "playwright-chromium";
-import { log, SolutionObject, solutionLogKey } from "./util/log";
 import chalk from "chalk";
 import { LocalStorage } from "node-localstorage";
 import path from "path";
-import { getAppRoot } from "./util/util";
+import playwright from "playwright-chromium";
+import { log } from "../util/log";
+import { getAppRoot } from "../util/util";
 const appRoot = getAppRoot();
 
 const localStorage = new LocalStorage(path.join(appRoot, ".scratch"));

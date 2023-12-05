@@ -4,17 +4,16 @@
 	"description": "devskar's solutions to Advent of Code",
 	"main": "index.js",
 	"scripts": {
-		"run": "ts-node ./run.ts",
-		"submit": "ts-node ./submit.ts",
-		"suck": "ts-node ./init.ts suck",
-		"seed": "ts-node ./init.ts seed",
-		"aoclogin": "ts-node ./login.ts"
+		"run": "ts-node ./scrips/run.ts",
+		"submit": "ts-node ./scrips/submit.ts",
+		"suck": "ts-node ./scrips/init.ts suck",
+		"seed": "ts-node ./scripts/init.ts seed",
+		"aoclogin": "ts-node ./scripts/login.ts"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/devskar/advent-of-code.git"
 	},
-	"author": "Trevor Gau",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/T-Hugs/advent-of-code/issues"

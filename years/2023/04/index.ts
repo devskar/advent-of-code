@@ -1,10 +1,9 @@
-import _ from "lodash";
-import * as util from "../../../util/util";
-import * as test from "../../../util/test";
 import chalk from "chalk";
-import { log, logSolution, trace } from "../../../util/log";
 import { performance } from "perf_hooks";
+import { log, logSolution } from "../../../util/log";
+import * as test from "../../../util/test";
 import { normalizeTestCases } from "../../../util/test";
+import * as util from "../../../util/util";
 
 const YEAR = 2023;
 const DAY = 4;
@@ -22,7 +21,15 @@ async function p2023day4_part2(input: string, ...params: any[]) {
 }
 
 async function run() {
-	const part1tests: TestCase[] = [];
+	const part1tests: TestCase[] = [
+		{
+			input: `1abc2
+		pqr3stu8vwx
+		a1b2c3d4e5f
+		treb7uchet`,
+			expected: "142",
+		},
+	];
 	const part2tests: TestCase[] = [];
 
 	const [p1testsNormalized, p2testsNormalized] = normalizeTestCases(part1tests, part2tests);
@@ -48,7 +55,7 @@ async function run() {
 	const part1Solution = String(await p2023day4_part1(input));
 	const part1After = performance.now();
 
-	const part2Before = performance.now()
+	const part2Before = performance.now();
 	const part2Solution = String(await p2023day4_part2(input));
 	const part2After = performance.now();
 

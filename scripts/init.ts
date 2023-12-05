@@ -5,9 +5,9 @@ import * as fs from "fs/promises";
 import mkdirp from "mkdirp";
 import { LocalStorage } from "node-localstorage";
 import * as path from "path";
-import { UA_STRING } from "./config";
+import { UA_STRING } from "../config";
+import { formatTime, getAppRoot, getDayRoot, getLatestPuzzleDate, getProblemUrl, replaceAll, wait } from "../util/util";
 import { getSessionToken } from "./getToken";
-import { formatTime, getAppRoot, getDayRoot, getLatestPuzzleDate, getProblemUrl, replaceAll, wait } from "./util/util";
 
 interface Settings {
 	pristine: boolean;

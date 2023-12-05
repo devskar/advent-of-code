@@ -1,12 +1,12 @@
-import { LocalStorage } from "node-localstorage";
-import { formatTime, getAppRoot, wait } from "./util/util";
-import path from "path";
-import { log, SolutionObject, solutionLogKey } from "./util/log";
-import fetch from "cross-fetch";
 import chalk from "chalk";
+import fetch from "cross-fetch";
 import _ from "lodash";
+import { LocalStorage } from "node-localstorage";
+import path from "path";
+import { UA_STRING } from "../config";
+import { SolutionObject, log, solutionLogKey } from "../util/log";
+import { formatTime, getAppRoot, wait } from "../util/util";
 import { getSessionToken } from "./getToken";
-import { UA_STRING } from "./config";
 
 const appRoot = getAppRoot();
 const localStorage = new LocalStorage(path.join(appRoot, ".scratch"));
@@ -68,7 +68,9 @@ async function submit() {
 	const msTillCooldown = getMsUntilActiveCooldownExpiration(solutionLog);
 	if (msTillCooldown > 0) {
 		log(
-			`Waiting ${formatTime(msTillCooldown)} until cooldown expiration before automatically submitting. Ctrl+C to abort.`
+			`Waiting ${formatTime(
+				msTillCooldown
+			)} until cooldown expiration before automatically submitting. Ctrl+C to abort.`
 		);
 	}
 	await wait(msTillCooldown);
@@ -99,7 +101,7 @@ async function submit() {
 			cookie: `session=${sessionToken}`,
 			accept: `text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9`,
 			"content-type": "application/x-www-form-urlencoded",
-			"user-agent": UA_STRING
+			"user-agent": UA_STRING,
 		},
 		method: "post",
 		body: postData,
@@ -136,12 +138,10 @@ async function submit() {
 				`Cooldown in progress (${waitTime} remaining). Re-submitting now will auto wait for cooldown to expire.`
 			);
 		} else if (responseText.includes("That's the right answer!")) {
-			mostRecent.submissions.push({date: new Date().toJSON(), result: "correct"});
-			log(
-				chalk.greenBright("Correct! One ") + chalk.yellowBright("GOLD") + chalk.greenBright(" star for you!")
-			);
+			mostRecent.submissions.push({ date: new Date().toJSON(), result: "correct" });
+			log(chalk.greenBright("Correct! One ") + chalk.yellowBright("GOLD") + chalk.greenBright(" star for you!"));
 		} else {
-			mostRecent.submissions.push({date: new Date().toJSON(), result: "unknown"});
+			mostRecent.submissions.push({ date: new Date().toJSON(), result: "unknown" });
 			log("Unrecognized response! See below.\n");
 			log(responseText);
 		}
